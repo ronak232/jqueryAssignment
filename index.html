@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>JQuery</title>
+  </head>
+  <body>
+    <main>
+      <h1>Basic Details</h1>
+      <div class="container">
+        <div class="form_data_submission">
+          <form action="/" class="form">
+            <label for="first_name">First Name:</label>
+            <br />
+            <input type="text" id="first_name" />
+            <br />
+            <label for="last_name">Last Name:</label>
+            <br />
+            <input type="text" id="last_name" />
+            <br />
+            <label for="E-Mail">E-Mail:</label>
+            <br />
+            <input type="email" id="mail" />
+            <br />
+            <label for="fitst_name">Password:</label>
+            <br />
+            <input type="password" id="password" required />
+            <br />
+            <label for="country_choice">Choose Country</label>
+            <br />
+            <select name="country">
+              <option value="Country">India</option>
+              <option value="Country">USA</option>
+              <option value="Country">Australia</option>
+              <option value="Country">England</option>
+            </select>
+            <br />
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
+        <div class="data_to_show"></div>
+      </div>
+    </main>
+  </body>
+  <script src="./jquery-3.6.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".btn").click(function (e) {
+        let first_name = $("#first_name").val();
+        let last_name = $("#last_name").val();
+        let e_mail = $("#mail").val();
+
+        let password = $("#password").val();
+        let country = $("select option:selected").text();
+        e.preventDefault();
+        $(".data_to_show").html(
+          `<table>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>E-Mail</th>
+              <th>Password</th>
+              <th>Country</th>
+              </tr>
+              <tr>
+                <td>${first_name}</td>
+                <td>${last_name}</td>
+                <td>${e_mail}</td>
+                <td>*********</td>
+                <td>${country}</td>
+                </tr>
+            </table>`
+        );
+      });
+    });
+  </script>
+</html>
